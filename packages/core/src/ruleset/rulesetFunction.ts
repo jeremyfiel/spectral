@@ -10,6 +10,7 @@ import { printPath, PrintStyle, printValue } from '@stoplight/spectral-runtime';
 
 import { RulesetValidationError } from './validation';
 import { IFunctionResult, JSONSchema, RulesetFunction, RulesetFunctionWithValidator } from '../types';
+import { isObject } from 'lodash';
 
 const ajv = new Ajv({ allErrors: true, allowUnionTypes: true, strict: true, keywords: ['x-internal'] });
 ajvErrors(ajv);
@@ -138,12 +139,12 @@ export function createRulesetFunction<I extends unknown, O extends unknown>(
 
   Reflect.defineProperty(wrappedFn, 'name', { value: fn.name });
 
-  const validOpts = new Set<unknown>();
+  const validOpts = new WeakSet();
   wrappedFn.validator = function (o: unknown): asserts o is O {
-    if (validOpts.has(o)) return; // I don't like this.
+    if (isObject(o) && validOpts.has(o)) return; // I don't like this.
 
     if (validateOptions(o)) {
-      validOpts.add(o);
+      if (isObject(o)) validOpts.add(o);
       return;
     }
 

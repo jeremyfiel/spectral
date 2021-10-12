@@ -9,7 +9,7 @@ import { print } from './__helpers__/print';
 import { RulesetValidationError } from '../validation';
 import { isPlainObject } from '@stoplight/json';
 import { Format } from '../format';
-import { JSONSchema4, JSONSchema6, JSONSchema7 } from 'json-schema';
+import type { JSONSchema4, JSONSchema6, JSONSchema7 } from 'json-schema';
 import { FormatsSet } from '../utils/formatsSet';
 
 async function loadRuleset(mod: Promise<{ default: RulesetDefinition }>, source?: string): Promise<Ruleset> {
