@@ -20,17 +20,17 @@
   },
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=12"
+    "node": "^12.20 || >= 14.13"
   },
   "scripts": {
-    "clean": "rimraf packages/*/{dist,.cache}",
+    "clean": "rimraf .cache packages/*/{dist,.cache}",
     "prebuild": "yarn workspace @stoplight/spectral-ruleset-migrator prebuild",
     "build": "tsc --build ./tsconfig.build.json",
     "postbuild": "yarn workspace @stoplight/spectral-cli postbuild",
     "lint": "yarn lint.prettier && yarn lint.eslint",
     "lint.fix": "yarn lint.prettier --write && yarn lint.eslint --fix",
     "lint.eslint": "eslint --cache --cache-location .cache/ --ext=.js,.mjs,.ts packages test-harness",
-    "lint.prettier": "prettier --ignore-path .eslintignore --ignore-unknown --check packages/core/src/meta/*.json docs/**/*.md README.md",
+    "lint.prettier": "prettier --ignore-path .eslintignore --ignore-unknown --check packages/core/src/meta/*.json packages/*/CHANGELOG.md docs/**/*.md README.md",
     "pretest": "yarn workspace @stoplight/spectral-ruleset-migrator pretest",
     "test": "yarn test.karma && yarn test.jest --coverage --maxWorkers=2",
     "test.harness": "jest -c ./test-harness/jest.config.js",
@@ -62,47 +62,47 @@
   "devDependencies": {
     "@commitlint/cli": "^13.2.0",
     "@commitlint/config-conventional": "^12.1.4",
+    "@octokit/core": "^3.5.1",
     "@types/jest": "^27.0.2",
     "@types/jest-when": "^2.7.3",
     "@types/karma": "^6.3.1",
-    "@types/lodash": "^4.14.175",
+    "@types/lodash": "^4.14.176",
     "@types/node": "^15.12.4",
     "@types/node-fetch": "^2.5.12",
     "@types/node-powershell": "^3.1.1",
     "@types/text-table": "^0.2.2",
-    "@types/tmp": "^0.2.1",
+    "@types/tmp": "^0.2.2",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^4.0.0",
     "fast-glob": "^3.2.5",
     "fetch-mock": "^9.11.0",
-    "husky": "^7.0.2",
-    "jest": "^27.2.4",
-    "jest-mock": "^27.2.4",
-    "jest-when": "^3.4.1",
+    "husky": "^7.0.4",
+    "jest": "^27.3.1",
+    "jest-mock": "^27.3.0",
+    "jest-when": "^3.4.2",
     "json-schema": "^0.3.0",
     "karma": "^6.1.1",
     "karma-chrome-launcher": "^3.1.0",
-    "karma-env-preprocessor": "^0.1.1",
     "karma-jasmine": "^3.3.1",
     "karma-typescript": "^5.5.2",
     "karma-typescript-es6-transform": "^5.5.2",
-    "lint-staged": "^11.2.0",
+    "lint-staged": "^11.2.6",
     "memfs": "^3.3.0",
     "node-powershell": "^4.0.0",
     "prettier": "^2.4.1",
-    "ts-jest": "^27.0.5",
-    "ts-node": "^10.2.1",
-    "typescript": "^4.3.5"
+    "ts-jest": "^27.0.7",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
   },
   "lint-staged": {
     "*.{ts,js}": [
       "eslint --fix --cache --cache-location .cache"
     ],
-    "CHANGELOG.md": [
+    "packages/*/CHANGELOG.md": [
       "prettier --write"
     ],
     "docs/**/*.md": [

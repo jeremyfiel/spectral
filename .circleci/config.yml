@@ -17,8 +17,8 @@ defaults:
       only: /^v.*/
   node-versions: &node-versions
     - "12.21"
-    - lts
-    - current
+    - "14.18"
+    - "16.8"
 
 commands:
   cached-dependencies:
@@ -80,8 +80,7 @@ commands:
     steps:
       - run:
           name: Lint commit messages
-          command: |
-            echo "$(git log -1 --pretty=format:"%s")" | npx commitlint
+          command: node ./scripts/lint-commit-messages.mjs
 
   test-node:
     parameters:
