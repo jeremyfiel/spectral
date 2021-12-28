@@ -14,7 +14,7 @@
         },
         {
           "type": "object",
-          "spectral-runtime": "ruleset-function",
+          "x-spectral-runtime": "ruleset-function",
           "required": ["function"]
         }
       ]

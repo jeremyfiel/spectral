@@ -12,7 +12,7 @@
     },
     "Format": {
       "$anchor": "format",
-      "spectral-runtime": "spectral-format",
+      "x-spectral-runtime": "format",
       "errorMessage": "must be a valid format"
     },
     "DiagnosticSeverity": {

@@ -2038,15 +2038,15 @@ __metadata:
     "@stoplight/spectral-runtime": ^1.0.0
     "@stoplight/types": 12.4.0
     "@stoplight/yaml": ^4.2.2
-    "@types/aggregate-error": ^1.0.1
+    "@types/es-aggregate-error": ^1.0.2
     "@types/json-schema": ^7.0.7
     "@types/minimatch": ^3.0.5
     "@types/treeify": ^1.0.0
-    aggregate-error: ^4.0.0
     ajv: ^8.6.0
     ajv-errors: ~3.0.0
     ajv-formats: ~2.1.0
     blueimp-md5: 2.18.0
+    es-aggregate-error: ^1.0.7
     jsonpath-plus: 6.0.1
     lodash: ~4.17.21
     lodash.topath: ^4.5.2
@@ -2274,15 +2274,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/aggregate-error@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@types/aggregate-error@npm:1.0.1"
-  dependencies:
-    aggregate-error: "*"
-  checksum: c6a381bf44d79a5aa43f9f3334c914659f32e6f505ad1caed2146046099e83a54abba5fdc37540328f8ef5742a9473594970cc52e13b9b713b63ecb1e94b1d9b
-  languageName: node
-  linkType: hard
-
 "@types/babel__core@npm:^7.0.0, @types/babel__core@npm:^7.1.14":
   version: 7.1.14
   resolution: "@types/babel__core@npm:7.1.14"
@@ -2342,6 +2333,15 @@ __metadata:
   version: 2.8.10
   resolution: "@types/cors@npm:2.8.10"
   checksum: f87e2f7bb6b4e3a143713a8e6def1791c47e8b3d344d30b6a190cae729de2f50df656c51fc92d5bdf7c5536cb32624f73bab244f6396a35aae0119e7c7bbad73
+  languageName: node
+  linkType: hard
+
+"@types/es-aggregate-error@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@types/es-aggregate-error@npm:1.0.2"
+  dependencies:
+    "@types/node": "*"
+  checksum: 076fd59b595f33c8c7e7eb68ec55bd43cf8b2cf7bbc6778e25d7ae1a5fa0538a0a56f149015f403d7bbcefe59f1d8182351685b59c1fe719fd46d0dd8a9737fa
   languageName: node
   linkType: hard
 
@@ -2804,16 +2804,6 @@ __metadata:
     depd: ^1.1.2
     humanize-ms: ^1.2.1
   checksum: d49c24d4b333e9507119385895a583872f4f53d62764a89be165926e824056a126955bae4a6d3c6f7cd26f4089621a40f7b27675f7868214d82118f744b9e82d
-  languageName: node
-  linkType: hard
-
-"aggregate-error@npm:*, aggregate-error@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "aggregate-error@npm:4.0.0"
-  dependencies:
-    clean-stack: ^4.0.0
-    indent-string: ^5.0.0
-  checksum: 586397769e25fc5c2da5995c736f11ba83adf0bbc5f72c7101ea38e795458fd7b497f672318119218b4d3b1f8b8d3001417cebe9de55b5467af5cbcbff4befa3
   languageName: node
   linkType: hard
 
@@ -3677,15 +3667,6 @@ __metadata:
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
   checksum: 2ac8cd2b2f5ec986a3c743935ec85b07bc174d5421a5efc8017e1f146a1cf5f781ae962618f416352103b32c9cd7e203276e8c28241bbe946160cab16149fb68
-  languageName: node
-  linkType: hard
-
-"clean-stack@npm:^4.0.0":
-  version: 4.1.0
-  resolution: "clean-stack@npm:4.1.0"
-  dependencies:
-    escape-string-regexp: 5.0.0
-  checksum: 56fdca7a67a61528676eaddce35442824700b674cf882150ac416824966f65b5e15d4ea02d1d47f4d16ad50213718c1f00ae0f6cca46aeec3fd761b49cf7204f
   languageName: node
   linkType: hard
 
@@ -4700,6 +4681,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"es-aggregate-error@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "es-aggregate-error@npm:1.0.7"
+  dependencies:
+    define-properties: ^1.1.3
+    es-abstract: ^1.19.0
+    function-bind: ^1.1.1
+    functions-have-names: ^1.2.2
+    get-intrinsic: ^1.1.1
+    globalthis: ^1.0.2
+  checksum: 16b89fefdf56c0478cd21577249156cf83e44c2220c057cbfddd99c01e15e03d6d90a85ce73dece4728a5bfcb022dc160e04a66b1f83a620f140842c6f8325f9
+  languageName: node
+  linkType: hard
+
 "es-to-primitive@npm:^1.2.1":
   version: 1.2.1
   resolution: "es-to-primitive@npm:1.2.1"
@@ -4773,13 +4768,6 @@ __metadata:
   version: 1.0.3
   resolution: "escape-html@npm:1.0.3"
   checksum: 6213ca9ae00d0ab8bccb6d8d4e0a98e76237b2410302cf7df70aaa6591d509a2a37ce8998008cbecae8fc8ffaadf3fb0229535e6a145f3ce0b211d060decbb24
-  languageName: node
-  linkType: hard
-
-"escape-string-regexp@npm:5.0.0":
-  version: 5.0.0
-  resolution: "escape-string-regexp@npm:5.0.0"
-  checksum: 20daabe197f3cb198ec28546deebcf24b3dbb1a5a269184381b3116d12f0532e06007f4bc8da25669d6a7f8efb68db0758df4cd981f57bc5b57f521a3e12c59e
   languageName: node
   linkType: hard
 
@@ -5522,6 +5510,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"functions-have-names@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "functions-have-names@npm:1.2.2"
+  checksum: 25f44b6d1c41ac86ffdf41f25d1de81c0a5b4a3fcf4307a33cdfb23b9d4bd5d0d8bf312eaef5ad368c6500c8a9e19f692b8ce9f96aaab99db9dd936554165558
+  languageName: node
+  linkType: hard
+
 "gauge@npm:~2.7.3":
   version: 2.7.4
   resolution: "gauge@npm:2.7.4"
@@ -5693,6 +5688,15 @@ __metadata:
   dependencies:
     type-fest: ^0.20.2
   checksum: 566b29b475dd793eeb44d5b54823fdbf320e7077f5d1d330856ac2e7e016e4b50c8310b12d498282d5b5b26bdd7a1a6343615f510bf37b8863ec2741d58cc6ad
+  languageName: node
+  linkType: hard
+
+"globalthis@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "globalthis@npm:1.0.2"
+  dependencies:
+    define-properties: ^1.1.3
+  checksum: 5a5f3c7ab94708260a98106b35946b74bb57f6b2013e39668dc9e8770b80a3418103b63a2b4aa01c31af15fdf6a2940398ffc0a408573c34c2304f928895adff
   languageName: node
   linkType: hard
 
@@ -6019,13 +6023,6 @@ __metadata:
   version: 4.0.0
   resolution: "indent-string@npm:4.0.0"
   checksum: 824cfb9929d031dabf059bebfe08cf3137365e112019086ed3dcff6a0a7b698cb80cf67ccccde0e25b9e2d7527aa6cc1fed1ac490c752162496caba3e6699612
-  languageName: node
-  linkType: hard
-
-"indent-string@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "indent-string@npm:5.0.0"
-  checksum: e466c27b6373440e6d84fbc19e750219ce25865cb82d578e41a6053d727e5520dc5725217d6eb1cc76005a1bb1696a0f106d84ce7ebda3033b963a38583fb3b3
   languageName: node
   linkType: hard
 

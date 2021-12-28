@@ -11,16 +11,15 @@ export { RulesetValidationError };
 
 export function assertValidRuleset(ruleset: unknown): asserts ruleset is RulesetDefinition {
   if (!isPlainObject(ruleset)) {
-    throw new AggregateError([new RulesetValidationError('Provided ruleset is not an object', [])]);
+    throw new RulesetValidationError('Provided ruleset is not an object', []);
   }
 
   if (!('rules' in ruleset) && !('extends' in ruleset) && !('overrides' in ruleset)) {
-    throw new AggregateError([
-      new RulesetValidationError('Ruleset must have rules or extends or overrides defined', []),
-    ]);
+    throw new RulesetValidationError('Ruleset must have rules or extends or overrides defined', []);
   }
 
   if (!validate(ruleset)) {
+    console.log(validate.errors);
     throw new AggregateError(convertAjvErrors(validate.errors ?? []));
   }
 }
@@ -29,8 +28,8 @@ export function isValidRule(rule: FileRuleDefinition): rule is RuleDefinition {
   return typeof rule === 'object' && rule !== null && !Array.isArray(rule) && ('given' in rule || 'then' in rule);
 }
 
-export function assertValidRule(rule: FileRuleDefinition): asserts rule is RuleDefinition {
+export function assertValidRule(rule: FileRuleDefinition, name: string): asserts rule is RuleDefinition {
   if (!isValidRule(rule)) {
-    throw new TypeError('Invalid rule');
+    throw new RulesetValidationError('Invalid rule', ['rules', name]);
   }
 }

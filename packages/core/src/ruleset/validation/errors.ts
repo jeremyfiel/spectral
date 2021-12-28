@@ -1,19 +1,18 @@
 import type { ErrorObject } from 'ajv';
 import type { IDiagnostic, JsonPath } from '@stoplight/types';
-import { pathToPointer } from '@stoplight/json';
 
 type RulesetValidationSingleError = Pick<IDiagnostic, 'message' | 'path'>;
 
 export class RulesetValidationError extends Error implements RulesetValidationSingleError {
   constructor(public readonly message: string, public readonly path: JsonPath) {
-    super(`Error at ${pathToPointer(path)}: ${message}`);
+    super(message);
   }
 }
 
 const RULE_INSTANCE_PATH = /^\/rules\/[^/]+/;
 const GENERIC_INSTANCE_PATH = /^\/(?:aliases|extends|overrides(?:\/\d+\/extends)?)/;
 
-export function convertAjvErrors(errors: ErrorObject[]): RulesetValidationSingleError[] {
+export function convertAjvErrors(errors: ErrorObject[]): RulesetValidationError[] {
   const sortedErrors = [...errors]
     .sort((errorA, errorB) => {
       const diff = errorA.instancePath.length - errorB.instancePath.length;

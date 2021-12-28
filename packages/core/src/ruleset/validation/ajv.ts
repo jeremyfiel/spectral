@@ -11,7 +11,7 @@ const ajv = new Ajv({ allErrors: true, strict: true, strictRequired: false, keyw
 addFormats(ajv);
 addErrors(ajv);
 ajv.addKeyword({
-  keyword: 'spectral-runtime',
+  keyword: 'x-spectral-runtime',
   schemaType: 'string',
   error: {
     message(ctx) {
@@ -22,14 +22,14 @@ ajv.addKeyword({
     const { data } = cxt;
 
     switch (cxt.schema as unknown) {
-      case 'spectral-format':
+      case 'format':
         cxt.fail(_`typeof ${data} !== "function"`);
         break;
-      case 'spectral-function':
+      case 'ruleset-function':
         cxt.pass(_`typeof ${data}.function === "function"`);
-        cxt.pass(
-          _`(() => { try { ${data}.function.validator && ${data}.function.validator('functionOptions' in ${data} ? ${data} : null); return true; } catch (e) { ${data}[Symbol.for(${message})] = e.message; return false; } })()`,
-        );
+        // cxt.pass(
+        //   _`(() => { try { ${data}.function.validator && ${data}.function.validator('functionOptions' in ${data} ? ${data} : null); return true; } catch (e) { ${data}[Symbol.for(${message})] = e.message; return false; } })()`,
+        // );
         break;
     }
   },
