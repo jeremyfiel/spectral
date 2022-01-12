@@ -13,9 +13,7 @@
           }
         },
         {
-          "type": "object",
-          "x-spectral-runtime": "ruleset-function",
-          "required": ["function"]
+          "$ref": "extensions#Function"
         }
       ]
     },
